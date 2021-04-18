@@ -5,9 +5,6 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
-import javax.validation.constraints.NotBlank;
-import java.util.List;
-import java.util.Set;
 
 @Entity
 @Data
@@ -19,12 +16,10 @@ public class Movie {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @NotBlank(message = "Field is required")
     private String name;
 
-    @NotBlank(message = "Field is required")
     private String genre;
 
-    @NotBlank(message = "Field is required")
     private Double budget;
+
 }

@@ -1,0 +1,38 @@
+package com.endava.movie.converter;
+
+import com.endava.movie.model.Movie;
+import com.endava.movie.model.MovieDTO;
+import org.springframework.stereotype.Component;
+
+import java.util.List;
+import java.util.stream.Collectors;
+
+@Component
+public class MovieConverter {
+    public MovieDTO modelToDTO(Movie movie) {
+        MovieDTO movieDTO = new MovieDTO();
+        movieDTO.setName(movie.getName());
+        movieDTO.setBudget(movie.getBudget());
+        movieDTO.setGenre(movie.getGenre());
+
+        return movieDTO;
+    }
+
+    public List<MovieDTO> modelToDTO(List<Movie> movies) {
+        return movies.stream().map(this::modelToDTO).collect(Collectors.toList());
+    }
+
+    public Movie dtoToModel(MovieDTO movieDTO) {
+        Movie movie = new Movie();
+        movie.setName(movieDTO.getName());
+        movie.setBudget(movieDTO.getBudget());
+        movie.setGenre(movieDTO.getGenre());
+
+        return movie;
+    }
+
+    public List<Movie> dtoToModel(List<MovieDTO> dtoMovies) {
+        return dtoMovies.stream().map(this::dtoToModel).collect(Collectors.toList());
+    }
+
+}
