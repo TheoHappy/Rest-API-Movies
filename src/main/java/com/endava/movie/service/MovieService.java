@@ -24,6 +24,14 @@ public class MovieService {
     private final MovieDao movieDao;
     private final MovieConverter converter;
 
+    public Movie getMovieById(Long id) throws MovieNotFoundException {
+        Optional<Movie> movie;
+        movie = movieDao.findById(id);
+        isPresent(movie);
+
+        return movie.get();
+    }
+
     public List<MovieDTO> getAllMovies() throws DataBaseException {
         List<Movie> movies;
         try {

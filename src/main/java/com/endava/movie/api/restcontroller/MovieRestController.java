@@ -2,6 +2,7 @@ package com.endava.movie.api.restcontroller;
 
 import com.endava.movie.exceptionhandling.DataBaseException;
 import com.endava.movie.exceptionhandling.MovieNotFoundException;
+import com.endava.movie.model.Movie;
 import com.endava.movie.model.MovieDTO;
 import com.endava.movie.service.MovieService;
 import lombok.Data;
@@ -21,6 +22,12 @@ public class MovieRestController {
     public ResponseEntity<Object> getAllMovies() throws DataBaseException {
         return new ResponseEntity<>(movieService.getAllMovies(), HttpStatus.OK);
     }
+
+    @GetMapping("/{id}")
+    public Movie getMovieById(@PathVariable Long id) throws MovieNotFoundException {
+        return movieService.getMovieById(id);
+    }
+
 
     @PostMapping
     public ResponseEntity<Object> addMovie(@RequestBody MovieDTO movieDTO){

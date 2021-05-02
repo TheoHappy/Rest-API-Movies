@@ -11,6 +11,7 @@ import java.util.stream.Collectors;
 public class MovieConverter {
     public MovieDTO modelToDTO(Movie movie) {
         MovieDTO movieDTO = new MovieDTO();
+        movieDTO.setId(movie.getId());
         movieDTO.setName(movie.getName());
         movieDTO.setBudget(movie.getBudget());
         movieDTO.setGenre(movie.getGenre());
@@ -24,6 +25,7 @@ public class MovieConverter {
 
     public Movie dtoToModel(MovieDTO movieDTO) {
         Movie movie = new Movie();
+        movie.setId(movieDTO.getId());
         movie.setName(movieDTO.getName());
         movie.setBudget(movieDTO.getBudget());
         movie.setGenre(movieDTO.getGenre());
